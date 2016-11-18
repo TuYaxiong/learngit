@@ -7,3 +7,43 @@ targetFile.withInputStream{
 	println(new String(buffer,0,hasRead))
 	
 }
+
+task linereadfile <<{
+	//it为每一行 读行循环
+	def targetFile=new File('build.gradle')
+	targetFile.eachLine{
+	println it
+	}
+}
+//理解
+/*eachLine内部...
+def eachLine(Closure closure){
+	循环{
+	it='一行数据'
+	closure(it)//闭包对象调用方法closure.call(实参)
+	}
+}
+*/
+
+
+task copyfile <<{
+//srcFile-->targetFile复制文件
+def srcFile = new File("build.gradle")  
+def targetFile = new File("haswrite.txt")  
+targetFile.withOutputStream{  
+	def os=it//输出流
+	srcFile.withInputStream{ 
+	def ins=it//输入流
+      os << ins//利用OutputStream的<<操作符重载，完成从inputstream到OutputStream  
+       //的输出  
+   } 
+   }
+   }
+
+task readfile <<{
+//一次性读完以byte[]形式返回
+def targetFile=new File("build.gradle")
+println new String(targetFile.getBytes(),"utf-8")//  <==文件内容一次性读出，返回类型为byte[]  
+}
+
+
