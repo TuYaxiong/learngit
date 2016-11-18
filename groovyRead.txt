@@ -1,0 +1,9 @@
+//groovy用it表InputStream
+def targetFile=new File("build.gradle")
+def buffer=new byte[1024]
+def hasRead
+targetFile.withInputStream{ 
+	while((hasRead=it.read(buffer))!=-1)
+	println(new String(buffer,0,hasRead))
+	
+}
