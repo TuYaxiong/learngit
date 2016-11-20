@@ -1,0 +1,273 @@
+ant debug报1.5过期 不支持泛型语法
+D:\SDK\tools\ant目录下,更改值1.5-->1.7
+
+
+程序无法运行异常退出
+很多时候跟系统的主题有关,更换主题.android:theme="@android:style/Theme.Holo"
+、ListView不能触发OnItemClickListener监听器
+检查行所绑定的行布局文件中是否使用了EditText，如果有的话将EditText的focusable 属性设为false。
+
+
+Calendar类
+Calendar currentTime = Calendar.getInstance();//获得对象 它默认会初始化系统当前时间值
+
+
+
+
+关于这个SD卡的路径问题
+"/video.mp4";// 注意啦.....路径组合,/要加上.
+
+if (Environment.getExternalStorageState().equals(//判断SD卡存在
+					Environment.MEDIA_MOUNTED))
+			{
+				// 获取SD卡对应的存储目录
+				File sdCardDir = Environment.getExternalStorageDirectory();
+				Toast.makeText(this,sdCardDir.getCanonicalPath(),Toast.LENGTH_LONG).show();	
+				File video = new File(sdCardDir.getCanonicalPath()+VOIDE);//File对象  与系统中看文件详细信息一致
+
+
+D:\Program Files\apache-ant-1.9.5
+这是我用的ant路径,,好像sdk自带ant..
+
+
+Android Studio 功能熟悉
+运行和调试  Android设备和虚拟机管理 工程文件资源目录结构 代码编辑设计布局 底部输出信息窗口
+调试时窗及调试技巧
+??Step Into(F7) - 程序向下执行一行，如果当前行有用户自定义方法（非官方类库方法）
+??Drop Frame - 点击该按钮后，你将返回到当前方法的调用处重新执行
+Module中的build.gradle配置信息.. 可配置启动代码混淆
+Build->Generate Signed APK...打包签名
+live Layout
+gradle 可设置离线
+android2.3 api 9
+android4.4.2 19
+
+
+快捷键
+删除本行 Ctrl+X
+复制本行 Ctrl+D 
+
+代码跳转 Ctrl + 鼠标单击
+方法间跳 Alt + Up/Down
+移前编辑 Ctrl+Alt+Right
+
+多列编辑 Alt+鼠标+拖动
+代码补全 Ctrl+Shift+Enter
+For 补全 .fori
+L  Templ Ctrl+J
+生成代码 Alt+Insert
+重命变量 Shift + F6
+
+错误定位 F2
+修复代码 Alt + Enter
+查找类   Ctrl+N
+查找文件 Ctrl+Shift + N
+任意查找 Shift + Shift
+最近编件 Ctrl＋E
+
+
+只留编辑窗Shift + Ctrl + F12
+返回代码编辑窗口 Esc
+
+变量定位 Ctrl + F12
+方法参信 Ctrl + P
+看函数定 Ctrl + Shift + I
+
+清无效包 Ctrl+Alt+O
+格式代码 Ctrl+Alt+L  
+ 
+
+
+插件
+--ParcelableGenerator 实现序列化
+--GsonFormat 根据JSON数据生成相应的实体类
+--CodeGlance 快速定位代码，类似于缩小编辑器右侧定位视图
+--Android WiFi ADB WIfi调试
+
+
+例句
+App is not indexable by Google Search; consider adding at least one Activity
+
+On SDK version 23 and up, your app data will be automatically backed up and restored on app install. Consider adding the attribute android:fullBackupContent to specify an @xml resource which configures which files to backup.
+
+Do not concatenate text displayed with setText. Use resource string with placeholders
+
+Handler reference leaks  Since this Handler is declared as an inner class, it may prevent the outer class from being garbage collected. If the Handler is using a Looper or MessageQueue for a thread other than the main thread, then there is no issue. If the Handler is using the Looper or MessageQueue of the main thread, you need to fix your Handler declaration, as follows: Declare the Handler as a static class; In the outer class, instantiate a WeakReference to the outer class and pass this object to your Handler when you instantiate the Handler; Make all references to members of the outer class using the WeakReference object.
+
+Unconditional layout inflation from view adapter: Should use View Holder pattern (use recycled view passed into this method as the second parameter) for smoother scrolling
+
+应用程式无法透过Google搜寻建立索引; 请考虑添加至少一个活动
+
+在SDK版本23及更高版本中，您的应用数据将自动备份并在应用安装时恢复。 考虑添加属性android：fullBackupContent以指定一个@xml资源，该资源配置要备份的文件。
+
+自定义View 需要重写其2 3 参数的构造器 否则xml属性不正常
+
+不要连接使用setText显示的文本。 将资源字符串用于占位符
+
+处理程序引用泄漏由于此处理程序被声明为内部类，它可能会阻止外部类被垃圾回收。 如果处理程序对主线程以外的线程使用Looper或MessageQueue，则没有问题。 如果处理程序使用主线程的Looper或MessageQueue，则需要修复您的Handler声明，如下所示：声明处理程序为静态类; 在外部类中，实例化一个WeakReference到外部类，并传递这个对象到你的处理程序当你实例化处理程序; 使用WeakReference对象对外部类的成员进行所有引用。
+
+从视图适配器无条件布局扩充：应使用查看持有人模式（使用循环视图传递到此方法作为第二个参数），以实现更流畅的滚动
+
+
+调试错误
+10-19 14:37:49.305 1497-1497/com.example.tyxiong.myapplication E/dalvikvm: Could not find class 'android.os.PersistableBundle', referenced from method com.example.tyxiong.myapplication.MainActivity.access$super
+
+>>>因为android studio 默认用到的 import android.support.v7.app.AppCompatActivity;
+下的Activity,在用些时候乃至ActionBar低版本会报找不到类,改成Activtiy为父类即可在低版本上运行19
+
+ No view found for id 0x7f0a0002
+view组件所在的布局文件未加载 
+
+
+这些是完全正常的。 它们表示有条件地从您的代码引用的类，但不存在于Android设备或模拟器上，因为它们是在较新版本的Android中引入的。 例如，在API级别19（Android 4.4）中添加了ArrayMap。 这些消息不代表“崩溃
+
+
+UML
+'#’表示protected
+
+
+SurfaceView
+SurfaceView是一个有自己Surface的View.缺点是不能做变形和动画.
+
+SurfaceTexture可以用作非直接输出的内容流，这样就提供二次处理的机会.
+
+TextureView是一个可以把内容流作为外部纹理输出在上面的View。它本身需要是一个硬件加速层.
+TextureView本身也包含了SurfaceTexture
+
+
+Thread.class类的源文件的toString方法
+编码解码问题,,平台...该方法所应用的java文件编码..???
+
+
+蛋白粉
+如果你只想变成大块的肌肉猛男，就吃蛋白粉；如果你已经是肌肉男，却发现自己的力量和耐力还不够理想，就吃肌酸；如果你已经拥有了让你自豪的肌肉和力量并且希望这种状态长久保持下去，那就吃氮泵。
+
+
+git命令
+初始化一个Git仓库，使用git init命令
+历史之间穿梭，使用命令git reset --hard commit_id
+直接丢弃工作区的修改时，用命令git checkout -- file
+关联一个远程库，使用命令git remote add origin git@server-name:path/repo-name.git
+git push -u origin master第一次推送master分支的所有内容
+命令git push origin master推送
+克隆到本地git clone git@github.com:michaelliao/gitskills.git
+git merge --no-ff -m "merge with no-ff" dev
+git stash  git stash pop
+git checkout -b dev origin/dev创建远程origin的dev分支到本地
+
+git blanch -vv
+ git push git@github.com:TuYaxiong/learngit.git 首次推
+
+git push origin branch-name推送自己的修改
+远程branch直接用名字,无须加origin/branch
+git pull 当前分支自动与唯一一个追踪分支进行合并
+git push origin branch-name
+git branch --set-upstream branch-name origin/branch-name本地分支和远程分支的链接关系没有
+
+git push origin --delete dev 删除远程分支
+git tag <name>就可以打一个新标
+git tag v0.9 6224937历史标
+git show <tagname>查看标签信息
+git tag -d <tagname>删除本地标
+git push origin :refs/tags/<tagname> 可以删除一个远程标签。
+git push origin <tagname>可以推送一个本地标签
+git push origin --tags可以推送全部未推送过的本地标签
+
+git config --global alias.st status别名
+
+git remote rm origin 移除远程库关联
+
+
+groovy命令
+DSL 领域相关语言(行话)
+gradle build执行build下所有task(不包括doLast)
+gradlew -q take名   quite安静    执行该目录下的build.gradle文件中的 take
+
+正则$  用于匹配行结束符  it$
+groovy语言4.times方法 循环4次
+task intro(dependsOn: hello) intro依赖hello任务
+未定义依赖时'hello'
+动态创建的 task
+4.times { counter ->
+    task "task$counter" << {
+task0.dependsOn task2, task3动态依赖
+每个 task 可以作为构建脚本的一个属性
+ doFirst、doLast 也可以使用doLast的重载符号 <<  这是等价的Action行为 运行该task才doLast才执行,否则(不加)每次执行脚本都运行.
+def val = 125 
+def testGString(obj)
+testGString("The Stock closed at ${val}"//$表示字符串结束+125
+
+it代表集合中每个元素  def s="hello" s.each{println it}
+
+
+person1.setName 'kk'
+person1.setName('kk')调用方法可省其()
+build.gradle看为public class
+可内部类 可方法
+rs?.next()   ?前面值为非null则执行.next()否则不做任何   assert哈
+ Elvis操作符三目
+metaClass属性反射
+得
+单引号也表示字符串(用def哦) def c1 = 'A'  println c1.getClass().getName() String
+char c1='A'  Char   
+def s = /c:\windows\system/       也为字符串// 利用/字符串/定义的字符串c:\windows\system
+def s = 'c:\\windows\\system' 
+
+函数调用可不加括号print("ddd")-->print "ddd" 除了官方常用这中api,自己的函数还是带的好,一个无参函数 省掉()跟变量无区别了...groovy都蒙版.
+
+defaultTasks 'dodo'默认task  task dodo <<{"dddd"} gradle -q就会执行
+DAG有向非循环图 gradle.taskGraph.whenReady 没懂
+
+List变量由[]定义  def aList = [5,'string',true]  
+Map变量由[:]定义  def aMap = ['key1':'value1','key2':true] 
+
+闭包{}可类似为方法
+def say={word->println "Hi,$word!"} 调用say("dpdp") 输出Hi,dpdp!
+
+public static <T> List<T> each(List<T> self, Closure closure)泛型方法 类型形参在修饰符与返回值之间
+调用函数中最后一个参数为闭包时,可省圆括号 doLast({println 'hello world!!!'})//该()可生活省
+只接在文件下定义变量 def x=1(被加到run()方法内部)它与方法不对等,所以方法访问不到它
+import groovy.transform.Field;   //必须要先import
+@Field x = 1 强制变为类的成员变量与函数对等
+io操作 new File("文件名").eachLine({println it})
+
+
+gradle命令
+一个project 必须有一个build.gradle    app lib 都为一个project
+gradle projects--相看该
+multi-project 就是加一个settings.gradle文件,将子project include进去.
+gradle tasks--查看project有的任务信息
+gradle clean---是执行清理任务，和make clean类似
+gradle properites----用来查看所有属性信息
+
+Gradle Project Setting三个对象
+Gradle对象性:gradle/实例对象  HomeDir/gradle可执行程序目录 User Home Dir/存储了配置文件目录
+Project对象:一个build.gradle文件为一个Project对象->也对应Build script  其中要作的工作有:加载插件(决定task多少) 配置(从不同的源读取文件) 设置属性
+加载插件 用到apply函数apply(Map<String,?> option)支持的key值有from plugin to 
+ext 跨脚本属性 ext属性支持Project和Gradle对象
+
+Task是Gradle中的一种数据类型，它代表了一些要执行或者要干的工作。不同的插件可以添加不同的Task。每一个Task都需要和一个Project关联
+要利用Project的task函数来创建一个Task   Task有doFirst和doLast两个函数，用于添加需要最先执行的Action和需要和需要最后执行的Action。Action就是一个闭包。
+
+
+
+
+cmd命令
+rd /s/q 目录----删除非空目录
+dir /ah---相看所有隐藏文件
+move 源文件 目的路径
+copy 文件 目的路径
+xcopy 目录下所有文件 目的路径
+del *---删除目录下所有文件
+dir 文件名----该目录下是否存在该文件
+cd \path1\.----进入指定目录
+ctrl+c---停止命令
+cd.>a.txt --利用将本目录写入(>)到指定文件中,而创建a.txt空文本
+set---可查看所有的环境变量   set path 可查path环境变量的值
+给变量追加内容（不同于3，那个是覆盖）：输入“set 变量名=%变量名%;变量内容”。如，为path添加一个新的路径，输入“ set path=%path%;d:\nmake.exe”即可
+快速编辑模式下
+复制---选中->右键(回车)
+粘贴---直接右键
+
+
+
