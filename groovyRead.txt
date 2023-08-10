@@ -23,6 +23,15 @@ def eachLine(Closure closure){
 	closure(it)//闭包对象调用方法closure.call(实参)
 	}
 }
+
+//理解
+/*eachLine内部...
+def eachLine(Closure closure){
+	循环{
+	it='一行数据'
+	closure(it)//闭包对象调用方法closure.call(实参)
+	}
+}
 */
 
 
